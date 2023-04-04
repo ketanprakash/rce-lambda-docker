@@ -236,7 +236,7 @@ export const handler = async (event) => {
 
   // return response;
 
-  const language = event["body"]["language"];
+  const {language} = JSON.parse(event["body"]);
   if (language === "c") return exeC(event);
   if (language === "cpp") return exeCpp(event);
   if (language === "java") return exeJava(event);
