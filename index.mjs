@@ -7,6 +7,7 @@ import generateFileName from "./helpers/generateName.mjs";
 import util from "util";
 const execAsync = util.promisify(exec);
 
+//functions to execute the code
 async function exeC(event) {
   try {
     const fileName = await generateFileName();
@@ -77,7 +78,7 @@ async function exeCpp(event){
       if (err) throw err;
     });
 
-    await execAsync(`gcc ${codePath} -o ${exePath}`);
+    await execAsync(`g++ ${codePath} -o ${exePath}`);
     const startTime = new Date().getTime();
     const { error, stdout, stderr } = await execAsync(
       `${exePath} < ${inputPath}`,
@@ -226,6 +227,7 @@ async function exePython(event) {
   }
 }
 
+//handler function for lambda
 export const handler = async (event) => {
   // TODO implement
   // const whatis = typeof event;
